@@ -34,9 +34,7 @@ async function consultarClima() {
 }
 
 function obtenerTextoClima(temperatura, descripcionClima) {
-  // Asigna un emoji basado en la descripción del clima
   const emoji = obtenerEmojiClima(descripcionClima);
-  // Formatea la temperatura con el emoji
   return `${(temperatura - 273.15).toFixed(2)} °C ${emoji}`;
 }
 
@@ -46,8 +44,8 @@ function mostrarEmojiConTransicion(texto) {
   emojiContainer.style.opacity = "1";
 }
 
+// Asigno un emoji basado en la descripción del clima
 function obtenerEmojiClima(descripcionClima) {
-  // Asigna un emoji basado en la descripción del clima
   switch (descripcionClima.toLowerCase()) {
     case "clear sky":
       return "☀️";

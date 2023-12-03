@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const provinciaDropdown = document.getElementById("provincia");
   const ciudadDropdown = document.getElementById("ciudad");
 
-  // Realizar la solicitud a la API de provincias
+  // Obtener Provincias
   fetch(
     "https://apis.datos.gob.ar/georef/api/provincias?campos=nombre,id&max=100"
   )
