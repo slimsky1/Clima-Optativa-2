@@ -5,7 +5,7 @@ async function consultarClima() {
 
   if (provincia && ciudad) {
     const apiKey = "2089eb94069bfd797c0532b1efaf41d8";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${provincia},Argentina&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${provincia},AR&appid=${apiKey}`;
 
     try {
       const response = await fetch(apiUrl);
