@@ -1,5 +1,5 @@
 const user = "slimsky1";
-const key = "aio_YlzF32oaf185Se6lkqQscgmMBtOQ";
+const key = "xxx";
 const topicKey = "clima";
 const url = `http://io.adafruit.com/api/v2/${user}/feeds/${topicKey}/data`;
 

@@ -2,7 +2,7 @@
 async function consultarClima() {
   const provincia = document.getElementById("provincia").value;
   const ciudad = document.getElementById("ciudad").value;
-  const nivelPersiana = 0;
+  /* const nivelPersiana = 0; */
 
   if (provincia && ciudad) {
     const apiKey = "2089eb94069bfd797c0532b1efaf41d8";
@@ -50,31 +50,23 @@ function mostrarEmojiConTransicion(texto) {
 function obtenerEmojiClima(descripcionClima) {
   switch (descripcionClima.toLowerCase()) {
     case "clear sky":
-      nivelPersiana = 100;
       return "☀️";
     case "few clouds":
     case "scattered clouds":
-      nivelPersiana = 75;
       return "🌤️";
     case "broken clouds":
     case "overcast clouds":
-      nivelPersiana = 70;
       return "☁️";
     case "shower rain":
     case "rain":
-      nivelPersiana = 50;
       return "🌧️";
     case "thunderstorm":
-      nivelPersiana = 10;
       return "⛈️";
     case "snow":
-      nivelPersiana = 0;
       return "❄️";
     case "mist":
-      nivelPersiana = 5;
       return "🌫️";
     default:
-      nivelPersiana = 50;
       return "🤷‍♂️";
   }
 }
