@@ -2,6 +2,7 @@
 async function consultarClima() {
   const provincia = document.getElementById("provincia").value;
   const ciudad = document.getElementById("ciudad").value;
+  const nivelPersiana = 0;
 
   if (provincia && ciudad) {
     const apiKey = "2089eb94069bfd797c0532b1efaf41d8";
@@ -21,6 +22,7 @@ async function consultarClima() {
         mostrarEmojiConTransicion(
           obtenerTextoClima(data.main.temp, data.weather[0].description)
         );
+        postMessage(obtenerNivelPersiana(data.weather[0].description));
       } else {
         alert("No se encontró información del clima.");
       }
@@ -48,23 +50,62 @@ function mostrarEmojiConTransicion(texto) {
 function obtenerEmojiClima(descripcionClima) {
   switch (descripcionClima.toLowerCase()) {
     case "clear sky":
+      nivelPersiana = 100;
       return "☀️";
     case "few clouds":
     case "scattered clouds":
+      nivelPersiana = 75;
       return "🌤️";
     case "broken clouds":
     case "overcast clouds":
+      nivelPersiana = 70;
       return "☁️";
     case "shower rain":
     case "rain":
+      nivelPersiana = 50;
       return "🌧️";
     case "thunderstorm":
+      nivelPersiana = 10;
       return "⛈️";
     case "snow":
+      nivelPersiana = 0;
       return "❄️";
     case "mist":
+      nivelPersiana = 5;
       return "🌫️";
     default:
+      nivelPersiana = 50;
       return "🤷‍♂️";
+  }
+}
+
+function obtenerNivelPersiana(descripcionClima) {
+  const fechaActual = new Date();
+  const hora = fechaActual.getHours();
+
+  if (hora > 20 && hora < 9) {
+    return 0;
+  } else {
+    switch (descripcionClima.toLowerCase()) {
+      case "clear sky":
+        return 100;
+      case "few clouds":
+      case "scattered clouds":
+        return 75;
+      case "broken clouds":
+      case "overcast clouds":
+        return 70;
+      case "shower rain":
+      case "rain":
+        return 50;
+      case "thunderstorm":
+        return 10;
+      case "snow":
+        return 0;
+      case "mist":
+        return 5;
+      default:
+        return 50;
+    }
   }
 }
